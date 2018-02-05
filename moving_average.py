@@ -12,4 +12,3 @@ def moving_average(array):
     avg /= len_arr
     avg = round(avg, 2)
     return avg
-    

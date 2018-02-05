@@ -2,7 +2,8 @@
 """ Boolinger """
 
 import sys
-from print_help import print_help
+from help_file import print_help
+from output_variables import OutputVariables
 from moving_average import moving_average
 
 
@@ -14,7 +15,6 @@ def split_file(file, period=True):
     if period is True:
         return array[-PERIOD:]
     return array
-
 
 
 def get_file(file):
@@ -38,6 +38,21 @@ def show_input():
     print("SD_coef: %.2f\n" % SD_COEF)
 
 
+def show_output(resuls):
+    """ Afficher les inputs """
+
+    print("Output:\nMA: %.2f" % resuls.get_ma())
+    # print("SD: %.2f" % resuls.get_sd())
+    # print("B+: %.2f" % resuls.get_plus())
+    # print("B-: %.2f" % resuls.get_minus())
+
+
+def fill_results(array, results):
+    """ Récupérer les valeurs calculées """
+
+    results.set_ma(moving_average(array))
+
+
 def main():
     """ Fonction main """
 
@@ -46,13 +61,21 @@ def main():
         print_help()
         return False
     array = split_file(content)
-    moving_average(array)
+
+    results = OutputVariables()
+
+    fill_results(array, results)
     show_input()
+    show_output(results)
     return True
 
+
 if __name__ == "__main__":
+
+    # INPUTS VARIABLES
     INDEX = 1
     PERIOD = 20
     SD_COEF = 1.5
+
     if len(sys.argv) is not 1:
         main()
