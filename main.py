@@ -19,6 +19,7 @@ def get_info(file):
 
 def print_help():
     """ Display help and exit """
+
     print("""Bollinger Bands
 
 USAGE
@@ -31,6 +32,7 @@ USAGE
     
 OPTIONS
     -h              print the usage and quit.""", file=sys.stderr)
+
 
 def main():
     """ Fonction main """
