@@ -11,16 +11,19 @@ def get_info(file):
         with open(file, "r") as file_fd:
             content = file_fd.read()
     except IOError:
-        print("OMG LE FOCHIER")
-        return 1
-    print(content)
+        print("Wrong file")
+        return None
+    array = content.split("\n")
+    return array
 
 
 def main():
     """ Fonction main """
 
-    get_info(sys.argv[1])
-    return 1
+    array = get_info(sys.argv[1])
+    if array is None:
+        return False
+    return True
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
