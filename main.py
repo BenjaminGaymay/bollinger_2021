@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
+""" Boolinger """
 
 import sys
 
 
 def get_info(file):
+    """ Récupérer le contenu d'un fichier """
+
     try:
-        with open(file, "r") as fd:
-            content = fd.read()
-    except:
+        with open(file, "r") as file_fd:
+            content = file_fd.read()
+    except IOError:
         print("OMG LE FOCHIER")
         return 1
     print(content)
 
 
 def main():
+    """ Fonction main """
+
     get_info(sys.argv[1])
     return 1
 
