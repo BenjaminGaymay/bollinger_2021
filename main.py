@@ -62,7 +62,7 @@ def main():
 
     content = get_file(sys.argv[1])
     if content is None:
-        return False
+        return 84
     array = split_file(content)
 
     results = OutputVariables()
@@ -70,7 +70,7 @@ def main():
     fill_results(array, results)
     show_input()
     show_output(results)
-    return True
+    return 0
 
 
 if __name__ == "__main__":
@@ -81,6 +81,6 @@ if __name__ == "__main__":
     SD_COEF = 2
 
     if len(sys.argv) is not 1:
-        main()
+        exit(main())
     else:
         print_help()
