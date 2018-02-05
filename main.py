@@ -18,7 +18,7 @@ def isfloat(line):
         return False
 
 
-def split_file(file, period=True):
+def split_file(file, args, period=True):
     """ Formater le fichier en tableau """
 
     array = file.split('\n')
@@ -26,7 +26,7 @@ def split_file(file, period=True):
     array = [line.strip(' ') for line in array if isfloat(line)]
 
     if period is True:
-        return array[-PERIOD:]
+        return array[-args["period"]:]
 
     return array
 
@@ -44,12 +44,12 @@ def get_file(file):
     return content
 
 
-def show_input():
+def show_input(args):
     """ Afficher les inputs """
 
-    print("Input:\nIndex: %d" % INDEX)
-    print("Period: %d" % PERIOD)
-    print("SD_coef: %.2f\n" % SD_COEF)
+    print("Input:\nIndex: %d" % args["index"])
+    print("Period: %d" % args["period"])
+    print("SD_coef: %.2f\n" % args["sd_coef"])
 
 
 def show_output(resuls):
@@ -61,39 +61,59 @@ def show_output(resuls):
     print("B-: %.2f" % resuls.get_minus())
 
 
-def fill_results(array, results):
+def fill_results(array, args, results):
     """ Récupérer les valeurs calculées """
 
     results.set_ma(moving_average(array))
     results.set_sd(std_deviation(results, array))
-    results.set_plus(calcul_bands(results, SD_COEF))
-    results.set_minus(calcul_bands(results, SD_COEF, False))
+    results.set_plus(calcul_bands(results, args["sd_coef"]))
+    results.set_minus(calcul_bands(results, args["sd_coef"], False))
+
+
+def check_args(argv):
+    """ Gestion des arguments """
+
+    if len(argv) >= 2 and argv[1] in ["-h", "--help"]:
+        print_help()
+        exit(0)
+    elif len(argv) < 5:
+        print_help()
+        return None
+    try:
+        args = {
+            "period": int(argv[1]),
+            "sd_coef": float(argv[2]),
+            "file": str(argv[3]),
+            "index": int(argv[4])
+        }
+    except ValueError:
+        print("Error: Bad argument.", file=sys.stderr)
+        return None
+
+    return args
 
 
 def main():
     """ Fonction main """
 
-    content = get_file(sys.argv[1])
+    args = check_args(sys.argv)
+    if not args:
+        return False
+
+    content = get_file(args["file"])
     if content is None:
         return False
-    array = split_file(content)
+    array = split_file(content, args)
 
     results = OutputVariables()
 
-    fill_results(array, results)
-    show_input()
+    fill_results(array, args, results)
+    show_input(args)
     show_output(results)
     return True
 
 
 if __name__ == "__main__":
 
-    # INPUTS VARIABLES
-    INDEX = 1
-    PERIOD = 20
-    SD_COEF = 2
-
-    if len(sys.argv) is not 1:
-        main()
-    else:
-        print_help()
+    if not main():
+        exit(84)
