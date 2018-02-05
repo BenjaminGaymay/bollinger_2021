@@ -24,7 +24,7 @@ def get_file(file):
         with open(file, "r") as file_fd:
             content = file_fd.read()
     except IOError:
-        print("Error: File '%s' doesn't exist." % file)
+        print("Error: File '%s' doesn't exist." % file, file=sys.stderr)
         return None
 
     return content
