@@ -6,7 +6,7 @@ import sys
 def get_info(file):
     try:
         with open(file, "r") as fd:
-                content = fd.read()
+            content = fd.read()
     except:
         print("OMG LE FOCHIER")
         return 1
@@ -18,5 +18,5 @@ def main():
     return 1
 
 if __name__ == "__main__":
-    if (len(sys.argv) == 2):
+    if len(sys.argv) == 2:
         main()
