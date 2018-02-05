@@ -12,8 +12,12 @@ def split_file(file, period=True):
 
     array = file.split('\n')
 
+    array = [line.strip(' ') for line in array]
+    array = list(filter(None, array))
+
     if period is True:
         return array[-PERIOD:]
+
     return array
 
 
