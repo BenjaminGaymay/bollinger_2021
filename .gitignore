@@ -1,3 +1,4 @@
 .idea
 .editorconfig
 __pycache__
+*.pyc

@@ -3,6 +3,7 @@
 
 import sys
 from print_help import print_help
+from moving_average import moving_average
 
 
 def split_file(file, period=True):
@@ -45,7 +46,7 @@ def main():
         print_help()
         return False
     array = split_file(content)
-    print(array)
+    moving_average(array)
     show_input()
     return True
 
