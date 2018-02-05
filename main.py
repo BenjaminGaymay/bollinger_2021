@@ -41,6 +41,7 @@ def show_input():
     print("Period: %d" % PERIOD)
     print("SD_coef: %.2f\n" % SD_COEF)
 
+
 def main():
     """ Fonction main """
 
