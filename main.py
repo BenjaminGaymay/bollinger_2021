@@ -5,7 +5,17 @@ import sys
 from help_file import print_help
 from output_variables import OutputVariables
 from calcul import std_deviation, moving_average, calcul_bands
-#import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+
+
+def isfloat(line):
+    """ Vérifier si une ligne est un nombre flotant """
+
+    try:
+        float(line)
+        return True
+    except ValueError:
+        return False
 
 
 def split_file(file, period=True):
@@ -13,8 +23,11 @@ def split_file(file, period=True):
 
     array = file.split('\n')
 
+    array = [line.strip(' ') for line in array if isfloat(line)]
+
     if period is True:
         return array[-PERIOD:]
+
     return array
 
 
