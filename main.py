@@ -58,5 +58,5 @@ if __name__ == "__main__":
     INDEX = 1
     PERIOD = 20
     SD_COEF = 1.5
-    if len(sys.argv) == 2:
+    if len(sys.argv) is not 1:
         main()
