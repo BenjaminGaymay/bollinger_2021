@@ -5,7 +5,7 @@ import sys
 from help_file import print_help
 from output_variables import OutputVariables
 from calcul import std_deviation, moving_average, calcul_bands
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 def isfloat(line):
@@ -111,7 +111,9 @@ def main():
     fill_results(array, args, results)
     show_input(args)
     show_output(results)
-    return True
+    plt.plot(array)
+    plt.show()
+    return 0
 
 
 if __name__ == "__main__":

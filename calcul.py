@@ -18,7 +18,7 @@ def std_deviation(results, array):
 
     res = 0
     for element in array:
-        res += pow(abs(float(element) - results.get_ma()), 2)
+        res += pow(float(element) - results.get_ma(), 2)
     res /= len(array)
     res = pow(res, 0.5)
     return res
