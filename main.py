@@ -4,8 +4,12 @@ import sys
 
 
 def get_info(file):
-    with open(file, "r") as fd:
-        content = fd.read()
+    try:
+        with open(file, "r") as fd:
+                content = fd.read()
+    except:
+        print("OMG LE FOCHIER")
+        return 1
     print(content)
 
 
@@ -15,4 +19,4 @@ def main():
 
 if __name__ == "__main__":
     if (len(sys.argv) == 2):
-		main()
+        main()
