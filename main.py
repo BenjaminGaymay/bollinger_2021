@@ -79,6 +79,7 @@ def check_args(argv):
     elif len(argv) < 5:
         print_help()
         return None
+
     try:
         args = {
             "period": int(argv[1]),
