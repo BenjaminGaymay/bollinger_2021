@@ -10,4 +10,5 @@ def main():
 	return 1
 
 if __name__ == "__main__":
-	main()
+    if (len(sys.argv) == 2):
+		main()
