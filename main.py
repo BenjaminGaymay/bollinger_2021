@@ -4,8 +4,8 @@
 import sys
 from help_file import print_help
 from output_variables import OutputVariables
-from moving_average import moving_average
-
+from calcul import std_deviation, moving_average
+import matplotlib.pyplot as plt
 
 def split_file(file, period=True):
     """ Formater le fichier en tableau """
@@ -24,7 +24,7 @@ def get_file(file):
         with open(file, "r") as file_fd:
             content = file_fd.read()
     except IOError:
-        print("Error: File '%s' doesn't exist." % file)
+        print("Error: File '%s' doesn't exist." % file, file=sys.stderr)
         return None
 
     return content
@@ -64,8 +64,11 @@ def main():
     results = OutputVariables()
 
     fill_results(array, results)
+    std_deviation(results)
     show_input()
     show_output(results)
+    # plt.plot(array)
+    # plt.show()
     return True
 
 

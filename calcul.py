@@ -12,3 +12,6 @@ def moving_average(array):
     avg /= len_arr
     avg = round(avg, 2)
     return avg
+
+def std_deviation(results):
+    print(results.get_ma())
