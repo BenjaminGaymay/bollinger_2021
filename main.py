@@ -58,7 +58,6 @@ def main():
 
     content = get_file(sys.argv[1])
     if content is None:
-        print_help()
         return False
     array = split_file(content)
 
