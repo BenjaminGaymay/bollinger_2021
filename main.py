@@ -27,7 +27,7 @@ standard_dev    standard deviation coefficient to apply
 indexes_file    file containing daily indexes
 index_number    index number to compute moving average and Bollinger bands
 OPTIONS
--h              print the usage and quit.""")
+-h              print the usage and quit.""", file=sys.stderr)
 
 def main():
     """ Fonction main """
