@@ -2,6 +2,7 @@
 """ Boolinger """
 
 import sys
+from print_help import print_help
 
 
 def split_file(file, period=True):
@@ -28,23 +29,6 @@ def get_file(file):
     return content
 
 
-def print_help():
-    """ Display help and exit """
-
-    print("""Bollinger Bands
-
-USAGE
-    ./bollinger [-h] period standard_dev indexes_file index_number
-
-    period          number of indexes for the moving average
-    standard_dev    standard deviation coefficient to apply
-    indexes_file    file containing daily indexes
-    index_number    index number to compute moving average and Bollinger bands
-    
-OPTIONS
-    -h              print the usage and quit.""", file=sys.stderr)
-
-
 def show_input():
     """ Afficher les inputs """
 
@@ -57,10 +41,11 @@ def main():
     """ Fonction main """
 
     content = get_file(sys.argv[1])
-    array = split_file(content)
-    if array is None:
+    if content is None:
+        print_help()
         return False
-
+    array = split_file(content)
+    print(array)
     show_input()
     return True
 
