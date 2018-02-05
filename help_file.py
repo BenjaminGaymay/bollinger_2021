@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ Print help """
-import sys
 
 
 def print_help():
@@ -17,4 +16,4 @@ USAGE
     index_number    index number to compute moving average and Bollinger bands
     
 OPTIONS
-    -h              print the usage and quit.""", file=sys.stderr)
+    -h              print the usage and quit.""")

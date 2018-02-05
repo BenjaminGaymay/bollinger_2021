@@ -4,7 +4,8 @@
 import sys
 from help_file import print_help
 from output_variables import OutputVariables
-from moving_average import moving_average
+from calcul import std_deviation, moving_average, calcul_bands
+#import matplotlib.pyplot as plt
 
 
 def split_file(file, period=True):
@@ -55,6 +56,9 @@ def fill_results(array, results):
     """ Récupérer les valeurs calculées """
 
     results.set_ma(moving_average(array))
+    results.set_sd(std_deviation(results, array))
+    results.set_plus(calcul_bands(results, SD_COEF))
+    results.set_minus(calcul_bands(results, SD_COEF, False))
 
 
 def main():
@@ -78,7 +82,7 @@ if __name__ == "__main__":
     # INPUTS VARIABLES
     INDEX = 1
     PERIOD = 20
-    SD_COEF = 1.5
+    SD_COEF = 2
 
     if len(sys.argv) is not 1:
         main()
