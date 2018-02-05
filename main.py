@@ -42,9 +42,9 @@ def show_output(resuls):
     """ Afficher les inputs """
 
     print("Output:\nMA: %.2f" % resuls.get_ma())
-    # print("SD: %.2f" % resuls.get_sd())
-    # print("B+: %.2f" % resuls.get_plus())
-    # print("B-: %.2f" % resuls.get_minus())
+    print("SD: %.2f" % resuls.get_sd())
+    print("B+: %.2f" % resuls.get_plus())
+    print("B-: %.2f" % resuls.get_minus())
 
 
 def fill_results(array, results):
@@ -79,3 +79,5 @@ if __name__ == "__main__":
 
     if len(sys.argv) is not 1:
         main()
+    else:
+        print_help()
