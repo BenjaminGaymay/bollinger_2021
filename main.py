@@ -4,17 +4,28 @@
 import sys
 
 
-def get_info(file):
+def split_file(file, period=True):
+    """ Formater le fichier en tableau """
+
+    array = file.split('\n')
+
+    if period is True:
+        return array[-PERIOD:]
+    return array
+
+
+
+def get_file(file):
     """ Récupérer le contenu d'un fichier """
 
     try:
         with open(file, "r") as file_fd:
             content = file_fd.read()
     except IOError:
-        print("Wrong file")
+        print("Error: File '%s' doesn't exist." % file)
         return None
-    array = content.split("\n")
-    return array
+
+    return content
 
 
 def print_help():
@@ -45,13 +56,12 @@ def show_input():
 def main():
     """ Fonction main """
 
-    array = get_info(sys.argv[1])
+    content = get_file(sys.argv[1])
+    array = split_file(content)
     if array is None:
-        print_help()
         return False
 
     show_input()
-#    print(array[-PERIOD:])
     return True
 
 if __name__ == "__main__":
