@@ -34,6 +34,13 @@ OPTIONS
     -h              print the usage and quit.""", file=sys.stderr)
 
 
+def show_input():
+    """ Afficher les inputs """
+
+    print("Input:\nIndex: %d" % INDEX)
+    print("Period: %d" % PERIOD)
+    print("SD_coef: %.2f\n" % SD_COEF)
+
 def main():
     """ Fonction main """
 
@@ -41,8 +48,14 @@ def main():
     if array is None:
         print_help()
         return False
+
+    show_input()
+#    print(array[-PERIOD:])
     return True
 
 if __name__ == "__main__":
+    INDEX = 1
+    PERIOD = 20
+    SD_COEF = 1.5
     if len(sys.argv) == 2:
         main()
