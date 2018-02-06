@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Boolinger """
+""" Bollinger Bands """
 
 import sys
 from help_file import print_help
@@ -53,7 +53,7 @@ def show_input(args):
 
 
 def show_output(resuls):
-    """ Afficher les inputs """
+    """ Afficher les outputs """
 
     print("Output:\nMA: %.2f" % resuls.get_ma())
     print("SD: %.2f" % resuls.get_sd())
@@ -112,11 +112,11 @@ def main():
     show_input(args)
     show_output(results)
     plt.plot(array)
+    plt.plot(results.get_ma())
     plt.show()
     return 0
 
 
 if __name__ == "__main__":
-
     if not main():
         exit(84)
