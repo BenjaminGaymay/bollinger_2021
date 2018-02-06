@@ -37,7 +37,7 @@ def get_file(file):
     try:
         with open(file, "r") as file_fd:
     except IOError:
-        print("Error: File '%s' doesn't exist." % file, file=sys.stderr)
+        print("Error: File '%s' doesn't exist" % file, file=sys.stderr)
         return None
     return content
 
@@ -86,7 +86,7 @@ def check_args(argv):
             "index": int(argv[4])
         }
     except ValueError:
-        print("Error: Bad argument.", file=sys.stderr)
+        print("Error: Bad argument", file=sys.stderr)
         return None
 
     return args
