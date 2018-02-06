@@ -22,13 +22,11 @@ def split_file(file, args, period=True):
     """ Formater le fichier en tableau """
 
     array = file.split('\n')
-
     array = [line.strip(' ') for line in array if isfloat(line)]
-    array = array[:args["index"] + 1]
 
     if period is True:
+        array = array[:args["index"] + 1]
         return array[-args["period"]:]
-
     return array
 
 
