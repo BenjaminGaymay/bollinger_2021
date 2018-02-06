@@ -36,6 +36,7 @@ def get_file(file):
 
     try:
         with open(file, "r") as file_fd:
+            content = file_fd.read()
     except IOError:
         print("Error: File '%s' doesn't exist." % file, file=sys.stderr)
         return None
@@ -109,9 +110,9 @@ def main():
     fill_results(array, args, results)
     show_input(args)
     show_output(results)
-    plt.plot(array)
-    plt.plot(results.get_ma())
-    plt.show()
+    # plt.plot(array)
+    # plt.plot([1000,2,3])
+    # plt.show()
     return 0
 
 
