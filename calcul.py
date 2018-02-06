@@ -10,7 +10,6 @@ def moving_average(array):
     for element in array:
         avg += float(element)
     avg /= len_arr
-    avg = round(avg, 2)
     return avg
 
 def std_deviation(results, array):
